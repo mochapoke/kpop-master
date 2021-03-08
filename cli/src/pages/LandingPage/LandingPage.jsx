@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import Center from '../../components/Center/Center';
 import RoundContainer from '../../components/RoundContainer/RoundContainer';
@@ -8,6 +8,8 @@ import GameTitle from '../../components/GameTitle/GameTitle';
 import ChooseOptions from './section/ChooseOptions/ChooseOptions';
 import HowToPlay from './section/HowToPlay/HowToPlay';
 import Notice from './section/Notice/Notice';
+import SoloOrTeam from './section/SoloOrTeam/SoloOrTeam';
+import LinkButton from '../../components/LinkButton/LinkButton';
 
 import { GameEndContext } from '../../context/GameEndContext';
 import { GameResultContext } from '../../context/GameResultContext';
@@ -18,6 +20,8 @@ const LandingPage = () => {
   const [isGameEnd, setIsGameEnd] = useContext(GameEndContext);
   // eslint-disable-next-line
   const [gameResult, setGameResult] = useContext(GameResultContext);
+
+  const [withWhom, setWithWhom] = useState('');
 
   useEffect(() => {
     setIsGameEnd(false);
@@ -42,7 +46,16 @@ const LandingPage = () => {
           <HowToPlay />
           <Notice />
         </Row>
-        <ChooseOptions />
+        <Row mainCard>
+          <SoloOrTeam getWithWhom={setWithWhom} />
+          {!withWhom ? null : withWhom === 'solo' ? (
+            <ChooseOptions />
+          ) : (
+            <LinkButton links='/lobby' with>
+              방 만들기
+            </LinkButton>
+          )}
+        </Row>
       </RoundContainer>
     </Center>
   );

@@ -103,11 +103,14 @@ const optionsStyle = css`
   border-radius: ${SIZES.radiusSmall};
 
   padding: 1.5rem;
-  margin: 2rem 0 4rem 0;
+
+  :not(:first-child) {
+    margin: 2rem 0 4rem 0;
+  }
 
   display: flex;
   flex-direction: column;
-  align-items: space-between;
+  align-self: center;
   justify-content: space-between;
 
   transition: all 0.3s ease;
@@ -116,6 +119,7 @@ const optionsStyle = css`
 
   @media ${SCREEN.laptop} {
     margin-top: 0;
+    align-self: center;
   }
 `;
 

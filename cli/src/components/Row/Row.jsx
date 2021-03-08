@@ -39,16 +39,17 @@ const mainStyles = css`
 const mainCardStyles = css`
   flex-direction: column;
   align-items: center;
+  margin-top: 2rem;
 
   @media ${SCREEN.tablet} {
     margin-bottom: 2rem;
+    margin-top: 0rem;
   }
 
   @media ${SCREEN.laptop} {
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
-    width: 80%;
     max-width: ${SIZES.laptopWidth};
   }
 `;
